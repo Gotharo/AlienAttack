@@ -11,6 +11,7 @@ let gameWon = false;
 let cannon = document.getElementById("cannon");
 let alien = document.getElementById("alien");
 let missile = document.getElementById("missile");
+let explosion = document.getElementById("explosion");
 
 let inputX = document.getElementById("inputX");
 let inputY = document.getElementById("inputY");
@@ -28,6 +29,18 @@ function render() {
 
     missile.style.left = `${guessX}px`;
     missile.style.top = `${guessY}px`;
+
+    
+    if(gameWon) {
+        explosion.style.display = "block";
+        explosion.style.left = `${alienX}px`;
+        explosion.style.top = `${alienY}px`;
+
+        alien.style.display = "none";
+        missile.style.display = "none";
+    }
+   
+
 }
 
 function clickHandler() {
@@ -65,10 +78,16 @@ function playGame() {
 
 function endGame() {
 
-        if(gameWon === true) {
-            output.innerHTML = `You Hit IT!!! and safe the earth as well!!!, <br> It only took you ${shotsMade} shots to did that.`;
-        }else {
-            output.innerHTML = ` Haaa you lost! <br> The earth has ben invaded!`;
-        }
+    if (gameWon === true) {
+        output.innerHTML = `You Hit IT!!! and safe the earth as well!!!, <br> It only took you ${shotsMade} shots to did that.`;
+        
+    } else {
+        output.innerHTML = ` Haaa you lost! <br> The earth has ben invaded!`;
+    }
+    button.removeEventListener("click", clickHandler, false);
+    button.disable = true;
+    inputX.disable = true;
+    inputY.disable = true;
 
 }
+
