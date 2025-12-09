@@ -32,9 +32,12 @@ function render() {
 
     
     if(gameWon) {
-        explosion.style.display = "block";
+        explosion.style.display = "block";       
         explosion.style.left = `${alienX}px`;
         explosion.style.top = `${alienY}px`;
+        explosion.addEventListener("animationend", () => {
+            explosion.style.display = "none";
+        });    
 
         alien.style.display = "none";
         missile.style.display = "none";

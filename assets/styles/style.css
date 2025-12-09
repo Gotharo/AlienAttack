@@ -16,6 +16,7 @@ body {
     width: 500px;
     top: 300px;
 }
+
 .inputs {
     margin-left: 10px;
     margin-right: 10px;
@@ -33,7 +34,7 @@ body {
     background-color: grey;
     width: 300px;
     height: 300px;
-    
+
 }
 
 #background {
@@ -80,5 +81,30 @@ body {
     height: 20px;
     display: none;
     background-image: url(../img/explosion.png);
+    animation-duration: 3s;
+    animation-name: explode;
+}
 
+@keyframes explode {
+    0% {
+        display: block;
+    }
+
+    10% {
+        display: block;
+        transform: scale(3);
+    }
+    15% {
+        display: block;
+        transform: scale(2.5);
+    }
+    
+    90% {
+        display: block;
+        transform: scale(.3);
+    }
+    100% {
+        display: block;
+        transform: scale(0);
+    }
 }
