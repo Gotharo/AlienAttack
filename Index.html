@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/styles/style.css">
 </head>
+
 <body>
+    <div id="stage">
+        <div id="background"></div>
+        <div id="cannon"></div>
+        <div id="alien"></div>
+        <div id="missile"></div>
+    </div>
+
+    <div class="command-console">
+        <p id="output"> Enter the X and Y position (0-300), then click fire.</p>
+        <div>
+            <input class="inputs" id="inputX" type="text" placeholder="X...">
+            <input class="inputs" id="inputY" type="text" placeholder="Y...">
+        </div>
+        <button id="button">fire!</button>
+    </div>
+
+
+
     <script src="./assets/scripts/script.js"></script>
 </body>
+
 </html>
