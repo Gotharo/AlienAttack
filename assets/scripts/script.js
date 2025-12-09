@@ -19,7 +19,11 @@ let output = document.getElementById("output");
 
 let button = document.getElementById("button")
 button.style.cursor = "pointer"
+
 button.addEventListener("click", clickHandler, false);
+
+window.addEventListener("keydown", clickHandler, false);
+
 
 function render() {
     alien.style.left = `${alienX}px`;
@@ -42,13 +46,43 @@ function render() {
         alien.style.display = "none";
         missile.style.display = "none";
     }
-   
-
 }
 
 function clickHandler() {
-    playGame();
+    validateInput( );
+}
 
+function keydownHandler(event) {
+    if (event.key === 13) {
+        validateInput( );
+    }
+}
+
+inputY.addEventListener("keydown", function(e) {
+  if (e.key === "0") {
+    e.stopPropagation();
+    // Si también quieres evitar que se escriba el 0:
+    // e.preventDefault();
+  }
+});
+
+function validateInput()
+{
+  guessX = parseInt(inputX.value);
+  guessY = parseInt(inputY.value);
+  
+  if(isNaN(guessX) || isNaN(guessY) )
+  {
+    output.innerHTML = "Please enter a number.";
+  }
+  else if(guessX > 300 || guessY > 300)
+  {
+    output.innerHTML = "Please enter a number less than 300.";
+  }
+  else
+  {
+    playGame();
+  }
 }
 
 function playGame() {
@@ -88,9 +122,10 @@ function endGame() {
         output.innerHTML = ` Haaa you lost! <br> The earth has ben invaded!`;
     }
     button.removeEventListener("click", clickHandler, false);
-    button.disable = true;
-    inputX.disable = true;
-    inputY.disable = true;
+    window.removeEventListener("keydown", clickHandler, false);
+    button.disabled = true;
+    inputX.disabled = true;
+    inputY.disabled = true;
 
 }
 
